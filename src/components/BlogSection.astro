@@ -1,11 +1,9 @@
 ---
 import BlogCard from './BlogCard.astro';
 import { getBlogCardImage } from '../lib/media';
-import { getCollection } from 'astro:content';
+import { getRecentPosts } from '../lib/posts';
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-).slice(0, 6);
+const posts = await getRecentPosts(6);
 ---
 
 <section class="blog-section">

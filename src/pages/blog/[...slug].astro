@@ -1,15 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogListing from '../../components/BlogListing.astro';
-import { getCollection } from 'astro:content';
+import { getAllPosts } from '../../lib/posts';
 
 const PAGE_SIZE = 12;
 
 export async function getStaticPaths() {
   const pageSize = 12;
-  const posts = (await getCollection('blog')).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-  );
+  const posts = await getAllPosts();
   const totalPages = Math.ceil(posts.length / pageSize);
 
   return [

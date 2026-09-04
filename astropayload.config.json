@@ -1,8 +1,9 @@
 {
   "version": 1,
   "tenantSlug": "mijntuinproducten",
-  "githubRepo": "Vivekworks114/mijntuinproducten",
+  "githubRepo": "zbseollp/mijntuinproducten",
   "modules": ["blog"],
   "blogContentPath": "src/content/blog",
-  "blogFileExtension": "mdx"
+  "blogFileExtension": "mdx",
+  "notes": "Featured images from Payload may lack a file extension on R2 — keep accepting /tenants/… URLs. Do not add wrangler custom domain routes."
 }

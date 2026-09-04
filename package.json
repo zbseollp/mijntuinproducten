@@ -3,9 +3,10 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
+    "build": "node scripts/remove-spam-blog.mjs && astro build",
     "dev": "astro dev",
+    "prepare:blog": "node scripts/remove-spam-blog.mjs",
     "start": "astro dev",
-    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "scrape:pages": "python3 scripts/scrape-zb-pages.py --kinds beste,plant",

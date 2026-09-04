@@ -1,9 +1,10 @@
 ---
 import ScrapedContentPage from '../components/ScrapedContentPage.astro';
 import BlogPostLayout from '../layouts/BlogPostLayout.astro';
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { getAllPosts } from '../lib/posts';
 
 export async function getStaticPaths() {
   const reservedSlugs = new Set([
@@ -19,7 +20,7 @@ export async function getStaticPaths() {
         .filter((slug) => !reservedSlugs.has(slug) && !slug.startsWith('beste-'))
     : [];
   const companySlugSet = new Set(companySlugs);
-  const posts = await getCollection('blog');
+  const posts = await getAllPosts();
 
   return [
     ...companySlugs.map((slug) => ({ params: { slug }, props: { type: 'company' as const, file: `${slug}.json` } })),

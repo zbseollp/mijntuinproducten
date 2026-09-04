@@ -1,10 +1,8 @@
 ---
 import { footerLocations, footerTuincentra, footerReviews, footerPlanten } from '../data/navigation';
-import { getCollection } from 'astro:content';
+import { getRecentPosts } from '../lib/posts';
 
-const latestPosts = (await getCollection('blog')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-).slice(0, 6);
+const latestPosts = await getRecentPosts(6);
 ---
 
 <footer class="site-footer">

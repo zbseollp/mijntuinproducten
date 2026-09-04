@@ -1,0 +1,3 @@
+# Broken encoded path (spaces + dash) → real post
+/hoe-vergroen-je-jouw-border/%20%20-   /hoe-vergroen-je-jouw-border/   301
+/hoe-vergroen-je-jouw-border/%20%20-/  /hoe-vergroen-je-jouw-border/   301

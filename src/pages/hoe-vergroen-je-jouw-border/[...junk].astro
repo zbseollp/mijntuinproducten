@@ -1,0 +1,15 @@
+---
+/**
+ * Catch malformed subpaths under this post (e.g. "%20%20-" from a broken
+ * relative href of "  -") and send them to the canonical article URL.
+ */
+export function getStaticPaths() {
+  return [
+    { params: { junk: '  -' } },
+    { params: { junk: '%20%20-' } },
+    { params: { junk: '-' } },
+  ];
+}
+
+return Astro.redirect('/hoe-vergroen-je-jouw-border/', 301);
+---

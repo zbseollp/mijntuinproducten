@@ -1,8 +1,8 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import BlogCard from '../components/BlogCard.astro';
-import { getCollection } from 'astro:content';
 import { getBlogCardImage, getBlogHeroImage, hasBlogCover } from '../lib/media';
+import { getAllPosts } from '../lib/posts';
 
 interface Props {
   entry: {
@@ -16,6 +16,7 @@ interface Props {
       featuredImage?: string;
       heroImage?: string;
       image?: string;
+      draft?: boolean;
     };
     id: string;
     body?: string;
@@ -24,6 +25,7 @@ interface Props {
 
 const { entry } = Astro.props;
 const { title, description, pubDate, author, categories } = entry.data;
+// Prefer the Payload-selected featured image over hero/fallback.
 const heroImage = getBlogHeroImage(entry.data, entry.id);
 const showCover = hasBlogCover(entry.data) || Boolean(heroImage);
 
@@ -43,9 +45,7 @@ const visibleCategories = (categories || []).filter(
   (c) => c.toLowerCase() !== 'uncategorized' && c.toLowerCase() !== 'blog',
 );
 
-const allPosts = (await getCollection('blog')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const allPosts = await getAllPosts();
 const categorySet = new Set(visibleCategories);
 const relatedPosts = allPosts
   .filter((p) => p.id !== entry.id)
@@ -203,10 +203,12 @@ const relatedPosts = allPosts
   }
 
   .article__cover {
+    position: relative;
     margin: 0 0 clamp(1.5rem, 3vw, 2rem);
     overflow: hidden;
     border-radius: clamp(12px, 2vw, 18px);
     aspect-ratio: 16 / 9;
+    width: 100%;
     background: var(--color-bg-section);
     box-shadow:
       0 18px 48px rgba(0, 45, 24, 0.14),
@@ -215,8 +217,12 @@ const relatedPosts = allPosts
   }
 
   .article__cover img {
+    position: absolute;
+    inset: 0;
+    display: block;
     width: 100%;
     height: 100%;
+    max-width: none;
     object-fit: cover;
     object-position: center;
   }
