@@ -1,0 +1,35 @@
+---
+title: "Wat een terrasoverkapping echt kost: vijf posten die zelden in de vanafprijs zitten - Mijn Tuin Producten"
+description: "Ontdek welke vijf kostenposten de eindprijs van een terrasoverkapping bepalen, van maat en dakkeuze tot wanden, ondergrond, montage en praktische keuzes."
+pubDate: "2026-08-27T00:00:00.000Z"
+date: "2026-08-27T00:00:00.000Z"
+author: "Redactie"
+categories:
+  - "Blog"
+draft: false
+_status: published
+featuredImage: "https://pub-d4024ad3e57841448e0ee58a19abe46b.r2.dev/tenants/mijntuinproducten/wat-een-terrasoverkapping-echt-kost-vijf-posten-die-zelden-in-de-vanafprijs-zitten.jpg"
+heroImage: "https://pub-d4024ad3e57841448e0ee58a19abe46b.r2.dev/tenants/mijntuinproducten/wat-een-terrasoverkapping-echt-kost-vijf-posten-die-zelden-in-de-vanafprijs-zitten.jpg"
+---
+
+<p>Wie online oriënteert op een terrasoverkapping komt al snel vanafprijzen tegen van een paar duizend euro. Wie vervolgens een offerte opvraagt voor de eigen situatie, schrikt regelmatig van het verschil. Dat komt zelden doordat de aanbieder onduidelijk was. Het komt doordat een vanafprijs bijna altijd een kale constructie beschrijft in een standaardmaat, terwijl vrijwel niemand een standaardsituatie heeft.</p>
+<p>Hieronder staan de vijf posten die het verschil tussen de vanafprijs en de eindprijs verklaren. Wie ze vooraf kent, kan offertes eerlijk vergelijken en weet meteen waar hij kan schuiven als het budget knelt.</p>
+<h2 id="de-maat-bepaalt-de-constructie-niet-andersom">De maat bepaalt de constructie, niet andersom</h2>
+<p>Een overkapping van drie bij drie meter en een van zes bij vier meter zijn geen twee versies van hetzelfde product. Zodra de overspanning groeit, moet de goot zwaarder worden uitgevoerd of komt er een extra staander bij. Een dubbelwandige, staalversterkte goot maakt grotere overspanningen mogelijk zonder tussenpaal, maar kost meer per strekkende meter dan een enkelwandig profiel.</p>
+<p>Praktisch betekent dit dat de prijs per vierkante meter niet lineair loopt. Van drie naar vier meter diepte kan relatief goedkoop zijn, van vier naar vijf meter kan een sprong geven omdat de constructie een klasse omhoog moet. Vraag daarom altijd twee maten op als je twijfelt. Het antwoord verrast vaak, in beide richtingen.</p>
+<h2 id="het-dak-is-de-grootste-variabele">Het dak is de grootste variabele</h2>
+<p>De dakkeuze is verreweg de sterkste knop aan de prijs. Polycarbonaat is het lichtst en het goedkoopst, waardoor er bovendien vaker een paal minder nodig is. Helder glas kost meer, weegt meer en vraagt daardoor een zwaardere constructie, maar houdt het daglicht in de achterliggende kamer op peil. Hittewerend glas kost daar nog eens bovenop. Een doekdak zit qua investering tussen polycarbonaat en glas in, maar heeft bewegende delen en dus een andere onderhoudscurve.</p>
+<p>Een lamellendak is het duurst en meteen het meest veelzijdig, omdat je met de stand van de lamellen zelf bepaalt hoeveel zon en warmte er binnenkomt. Wie op een zuidterras een dicht glazen dak legt zonder enige vorm van zonwering, bouwt in juli een serre waar niemand wil zitten. Dat is geen productfout, dat is natuurkunde. Bij een <a href="https://vanbeem.nl/overkappingen/">aluminium overkapping met glazen dak</a> hoort in die oriëntatie eigenlijk altijd een zonweringsoplossing in de begroting, en dat is precies de post die in vanafprijzen ontbreekt.</p>
+<h2 id="wanden-zijn-geen-luxe-maar-een-gebruiksbeslissing">Wanden zijn geen luxe maar een gebruiksbeslissing</h2>
+<p>De meeste mensen kopen een overkapping voor de zomer en gebruiken hem uiteindelijk het meest in het voor- en najaar. Op dat moment blijkt wind belangrijker dan regen. Een open overkapping op een winderig perceel is in april en oktober nauwelijks bruikbaar, terwijl dezelfde constructie met glazen schuifwanden aan twee zijden er een half jaar gebruiksduur bij krijgt.</p>
+<p>Schuifwanden, vaste zijwanden en een spie boven de wand zijn allemaal aparte posten. Het goede nieuws is dat een modulair systeem toestaat om ze later toe te voegen. Wie krap zit, kiest dus liever nu voor de juiste constructie en voegt de wanden volgend jaar toe, dan andersom.</p>
+<h2 id="de-ondergrond-wordt-structureel-onderschat">De ondergrond wordt structureel onderschat</h2>
+<p>Een overkapping heeft een vlakke, draagkrachtige ondergrond nodig. Bestaande tegels die iets zijn verzakt, een terras dat afloopt richting de gevel of een fundering die niet diep genoeg zit, komen bijna altijd pas bij de inmeting aan het licht. Op dat moment ligt er ineens een post voor het opnieuw stellen van het terras of het storten van poeren.</p>
+<p>Reken daarnaast op de afvoer van regenwater. Een dak van vier bij vier meter vangt bij een stevige bui in korte tijd honderden liters op. Die moeten ergens heen. Aansluiting op een bestaande put, een infiltratiekrat of een grindkoffer is een reële post die zelden in een online configuratie zit.</p>
+<h2 id="montage-bereikbaarheid-en-de-dingen-erna">Montage, bereikbaarheid en de dingen erna</h2>
+<p>De laatste post is de plaatsing zelf. Een achtertuin die alleen bereikbaar is via een smalle gang of via de woning maakt het werk aantoonbaar duurder, omdat materiaal met de hand naar binnen moet. Een tuin met een oprit naast het huis scheelt vaak een dagdeel arbeid.</p>
+<p>En dan zijn er de dingen die pas na oplevering opkomen. Verlichting in de goot of in de lamellen, een terrasverwarmer, stroompunten, een vloer onder de overkapping. Wie die wensen vermoedt, laat de bekabeling meteen meelopen tijdens de montage. Achteraf een kabel trekken door een gesloten profiel is duurder dan het vooraf inplannen, ook als je de armaturen pas volgend jaar koopt.</p>
+<h2 id="zo-vergelijk-je-offertes-eerlijk">Zo vergelijk je offertes eerlijk</h2>
+<p>Vraag bij elke aanbieder om dezelfde vijf dingen expliciet in de offerte: de exacte maatvoering met het aantal staanders, het daktype met eventuele hittewering, de wanden of de voorbereiding daarop, wat er met het regenwater gebeurt en wat er onder montage valt. Zodra die vijf op papier staan, vergelijk je producten in plaats van marketing.</p>
+<p>Het loont om minstens één keer fysiek te gaan kijken voordat je tekent. Het verschil tussen helder en opaal polycarbonaat, of tussen een lamellendak dat volledig sluit en een dat dat niet doet, zie je op een productfoto simpelweg niet. Bij aanbieders met een grote showroom, zoals <a href="https://vanbeem.nl/">Van Beem Buitenleven</a> in Zwanenburg, staan opstellingen op ware grootte waar je onder kunt gaan staan en de daken naast elkaar kunt beoordelen. Dat kost een middag en voorkomt een keuze waar je vijftien jaar naar kijkt.</p>
+<p>Tot slot een nuchtere rekenregel. Een goed uitgevoerde overkapping gaat gemakkelijk twintig jaar mee. Het verschil tussen de goedkoopste en de best passende oplossing bedraagt in de praktijk vaak een paar duizend euro. Uitgesmeerd over die levensduur is dat een paar tientjes per maand, tegenover een terras dat je een half jaar langer per jaar gebruikt. Dat is meestal de rekensom die de knoop doorhakt.</p>

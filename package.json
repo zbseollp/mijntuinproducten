@@ -13,7 +13,8 @@
     "scrape:bedrijven": "python3 scripts/scrape-zb-pages.py --kinds bedrijf --workers 10",
     "download:images": "node scripts/download-images.mjs",
     "verify:links": "python3 scripts/verify-links.py",
-    "check:windows-paths": "node scripts/check-windows-paths.mjs"
+    "check:windows-paths": "node scripts/check-windows-paths.mjs",
+    "deploy": "npm run build && node scripts/guard-deploy.mjs && npx wrangler deploy"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.14",
