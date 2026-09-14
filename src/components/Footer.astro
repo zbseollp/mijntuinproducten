@@ -1,6 +1,6 @@
 ---
 import { footerLocations, footerTuincentra, footerReviews, footerPlanten } from '../data/navigation';
-import { getRecentPosts } from '../lib/posts';
+import { getRecentPosts, publicHref } from '../lib/posts';
 
 const latestPosts = await getRecentPosts(6);
 ---
@@ -46,7 +46,7 @@ const latestPosts = await getRecentPosts(6);
         <h4 class="footer__heading">Laatste blogs</h4>
         <ul class="footer__list">
           {latestPosts.map((post) => (
-            <li><a href={`/${post.id}/`}>{post.data.title}</a></li>
+            <li><a href={publicHref(post)}>{post.data.title}</a></li>
           ))}
         </ul>
       </div>

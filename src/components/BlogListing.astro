@@ -1,6 +1,7 @@
 ---
 import BlogCard from './BlogCard.astro';
 import { getBlogCardImage } from '../lib/media';
+import { formatPostDate, publicHref, publicSlug } from '../lib/posts';
 
 interface Props {
   posts: Array<any>;
@@ -16,7 +17,7 @@ const { posts, currentPage, totalPages } = Astro.props;
     <p class="blog-listing__count">{posts.length} artikelen op deze pagina</p>
     <div class="blog-listing__grid">
       {posts.map((post) => (
-        <BlogCard title={post.data.title} excerpt={post.data.description} image={getBlogCardImage(post.data, post.id)} date={post.data.pubDate.toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })} href={`/${post.id}/`} />
+        <BlogCard title={post.data.title} excerpt={post.data.description} image={getBlogCardImage(post.data, publicSlug(post), post.body ?? '')} date={formatPostDate(post.data)} href={publicHref(post)} />
       ))}
     </div>
     {totalPages > 1 && (

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogListing from '../../components/BlogListing.astro';
-import { getAllPosts } from '../../lib/posts';
+import { getAllPosts, publicSlug } from '../../lib/posts';
 
 const PAGE_SIZE = 12;
 
@@ -20,10 +20,13 @@ export async function getStaticPaths() {
         totalPages,
       },
     })),
-    ...posts.flatMap((entry) => [
-      { params: { slug: entry.id }, props: { type: 'redirect' as const, target: `/${entry.id}/` } },
-      { params: { slug: `article/${entry.id}` }, props: { type: 'redirect' as const, target: `/${entry.id}/` } },
-    ]),
+    ...posts.flatMap((entry) => {
+      const slug = publicSlug(entry);
+      return [
+        { params: { slug }, props: { type: 'redirect' as const, target: `/${slug}/` } },
+        { params: { slug: `article/${slug}` }, props: { type: 'redirect' as const, target: `/${slug}/` } },
+      ];
+    }),
   ];
 }
 

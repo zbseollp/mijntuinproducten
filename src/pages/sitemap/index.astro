@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { navigation } from '../../data/navigation';
-import { getAllPosts } from '../../lib/posts';
+import { getAllPosts, publicHref } from '../../lib/posts';
 import { readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import tuincentraCities from '../../data/pages/tuincentra-cities.json';
@@ -67,7 +67,7 @@ const cityLinks = Object.values(tuincentraCities).flat();
         <h2>Blog ({posts.length})</h2>
         <ul class="sitemap-columns">
           {posts.map((post) => (
-            <li><a href={`/${post.id}/`}>{post.data.title}</a></li>
+            <li><a href={publicHref(post)}>{post.data.title}</a></li>
           ))}
         </ul>
       </div>

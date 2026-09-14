@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * Mark SEO malware / celebrity-gossip posts as draft. Nothing is deleted —
- * files stay on disk; the shared loader hides them from the build.
+ * Mark injected script/redirect payloads as unpublished spam.
+ * Do not hide published Payload posts via leftover draft or gossip heuristics.
  *
  *   node scripts/remove-spam-blog.mjs
  *   node scripts/remove-spam-blog.mjs --dry-run
@@ -21,28 +21,6 @@ const INJECTION_PATTERNS = [
   /<meta[^>]+http-equiv=["']?refresh["']?[^>]*url=/i,
 ];
 
-const GOSSIP_TITLE_PATTERNS = [
-  /\bvriendin\b/i,
-  /\bvriend van\b/i,
-  /\bvriend\b/i,
-  /\bgetrouwd\b/i,
-  /\brelatiestatus\b/i,
-  /\bex-partner\b/i,
-  /\bzwanger\b/i,
-  /\bgescheiden\b/i,
-  /\bpartner\b/i,
-  /\bleeftijd\b/i,
-  /\b(?:vermogen|lengte) van\b/i,
-  /\bmoeder\b/i,
-  /\bvader\b/i,
-  /\bdochter\b/i,
-  /\bzoon van\b/i,
-  /\bkinderen\b/i,
-];
-
-const GARDEN_ALLOW =
-  /\b(?:tuin|plant|bloem|gazon|border|potgrond|bestrating|heg|haag|moestuin|snoe|decoratie|hout|steiger|graszoden|kunstgras|vijver|loungeset|tuinmeubel)\b/i;
-
 function listBlogFiles(dir = BLOG_DIR) {
   return readdirSync(dir)
     .filter((name) => /\.mdx?$/i.test(name))
@@ -50,26 +28,18 @@ function listBlogFiles(dir = BLOG_DIR) {
     .sort();
 }
 
-function readField(frontmatter, field) {
-  const match = frontmatter.match(new RegExp(`^${field}:\\s*(.*)$`, 'm'));
-  if (!match) return '';
-  return match[1].trim().replace(/^["']|["']$/g, '');
-}
-
 function slugOf(path) {
   return path.replace(/\\/g, '/').split('/').pop().replace(/\.mdx?$/i, '');
 }
 
-function isSpam(path, frontmatter, body) {
-  const title = readField(frontmatter, 'title');
-  const slug = slugOf(path);
-  const hay = `${slug}\n${title}\n${body}`;
+function isInjection(path, frontmatter, body) {
+  const hay = `${path}\n${frontmatter}\n${body}`;
   if (INJECTION_PATTERNS.some((p) => p.test(hay))) {
     return 'injected script/redirect payload';
   }
-  const titleHay = `${slug.replace(/-/g, ' ')} ${title}`;
-  if (!GARDEN_ALLOW.test(titleHay) && GOSSIP_TITLE_PATTERNS.some((p) => p.test(titleHay))) {
-    return 'celebrity/gossip SEO spam';
+  const slug = slugOf(path);
+  if (slug === 'hello-world' || slug === 'blog-template' || slug.startsWith('blog-template')) {
+    return 'stub';
   }
   return null;
 }
@@ -97,7 +67,7 @@ for (const path of listBlogFiles()) {
   const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
   const frontmatter = m?.[1] ?? '';
   const body = m ? raw.slice(m[0].length) : raw;
-  const reason = isSpam(path, frontmatter, body);
+  const reason = isInjection(path, frontmatter, body);
   if (!reason) continue;
   found += 1;
   if (dryRun) {

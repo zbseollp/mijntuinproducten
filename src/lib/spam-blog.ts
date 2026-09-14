@@ -1,10 +1,8 @@
 /**
  * Spam / SEO-malware detector for mijntuinproducten blog content.
  *
- * Garden niche — celebrity gossip, "leeftijd/vriendin/getrouwd" filler and
- * page-hijack payloads must never reach listings or public routes.
- *
- * Files are marked draft (never deleted) so Payload sync / git history survive.
+ * Listings hide injected script/redirect payloads only. Gossip title
+ * heuristics stay available for editors but must not drop published CMS posts.
  */
 
 const INJECTION_PATTERNS: RegExp[] = [
@@ -54,10 +52,12 @@ export function isGossipSpamPost(id: string, title = ''): boolean {
   return GOSSIP_TITLE_PATTERNS.some((pattern) => pattern.test(haystack));
 }
 
-/** Hard spam — filtered from every listing and route. */
+/**
+ * Hard spam only — injected script/redirect payloads.
+ * Celebrity/gossip title heuristics must not hide published Payload posts.
+ */
 export function isSpamBlogPost(id: string, body = '', title = ''): boolean {
-  if (hasInjectedPayload(`${id}\n${title}\n${body}`)) return true;
-  return isGossipSpamPost(id, title);
+  return hasInjectedPayload(`${id}\n${title}\n${body}`);
 }
 
 export const SPAM_INJECTION_PATTERNS = INJECTION_PATTERNS;

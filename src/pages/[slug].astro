@@ -4,7 +4,7 @@ import BlogPostLayout from '../layouts/BlogPostLayout.astro';
 import { render } from 'astro:content';
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { getAllPosts } from '../lib/posts';
+import { getAllPosts, publicSlug } from '../lib/posts';
 
 export async function getStaticPaths() {
   const reservedSlugs = new Set([
@@ -25,8 +25,11 @@ export async function getStaticPaths() {
   return [
     ...companySlugs.map((slug) => ({ params: { slug }, props: { type: 'company' as const, file: `${slug}.json` } })),
     ...posts
-      .filter((entry) => !reservedSlugs.has(entry.id) && !/^\d+$/.test(entry.id) && !companySlugSet.has(entry.id))
-      .map((entry) => ({ params: { slug: entry.id }, props: { type: 'post' as const, entry } })),
+      .filter((entry) => {
+        const slug = publicSlug(entry);
+        return !reservedSlugs.has(slug) && !/^\d+$/.test(slug) && !companySlugSet.has(slug);
+      })
+      .map((entry) => ({ params: { slug: publicSlug(entry) }, props: { type: 'post' as const, entry } })),
   ];
 }
 

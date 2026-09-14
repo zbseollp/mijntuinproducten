@@ -2,7 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import BlogCard from '../components/BlogCard.astro';
 import { getBlogCardImage, getBlogHeroImage, hasBlogCover } from '../lib/media';
-import { getAllPosts } from '../lib/posts';
+import { formatPostDate, getAllPosts, getPostDate, publicHref, publicSlug } from '../lib/posts';
 
 interface Props {
   entry: {
@@ -16,6 +16,8 @@ interface Props {
       featuredImage?: string;
       heroImage?: string;
       image?: string;
+      thumbnail?: string;
+      slug?: string;
       draft?: boolean;
     };
     id: string;
@@ -24,16 +26,14 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { title, description, pubDate, author, categories } = entry.data;
+const { title, description, author, categories } = entry.data;
+const slug = publicSlug(entry);
+const pubDate = getPostDate(entry.data);
 // Prefer the Payload-selected featured image over hero/fallback.
-const heroImage = getBlogHeroImage(entry.data, entry.id);
-const showCover = hasBlogCover(entry.data) || Boolean(heroImage);
+const heroImage = getBlogHeroImage(entry.data, slug, entry.body ?? '');
+const showCover = hasBlogCover(entry.data, entry.body ?? '') || Boolean(heroImage);
 
-const formattedDate = pubDate.toLocaleDateString('nl-NL', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-});
+const formattedDate = formatPostDate(entry.data);
 
 const wordCount = `${title} ${description} ${entry.body || ''}`
   .trim()
@@ -48,7 +48,7 @@ const visibleCategories = (categories || []).filter(
 const allPosts = await getAllPosts();
 const categorySet = new Set(visibleCategories);
 const relatedPosts = allPosts
-  .filter((p) => p.id !== entry.id)
+  .filter((p) => publicSlug(p) !== slug)
   .map((p) => {
     let score = 0;
     for (const c of p.data.categories || []) {
@@ -58,7 +58,7 @@ const relatedPosts = allPosts
   })
   .sort(
     (a, b) =>
-      b.score - a.score || b.post.data.pubDate.valueOf() - a.post.data.pubDate.valueOf(),
+      b.score - a.score || getPostDate(b.post.data).getTime() - getPostDate(a.post.data).getTime(),
   )
   .slice(0, 3)
   .map((x) => x.post);
@@ -108,7 +108,7 @@ const relatedPosts = allPosts
           {description && <p class="article__lead">{description}</p>}
 
           <div class="article__meta">
-            <time datetime={pubDate.toISOString()}>{formattedDate}</time>
+            <time datetime={pubDate.getTime() ? pubDate.toISOString() : undefined}>{formattedDate}</time>
             <span class="article__dot" aria-hidden="true"></span>
             <span>{readingMinutes} min lezen</span>
             {author && author !== 'admin' && (
@@ -143,13 +143,9 @@ const relatedPosts = allPosts
                 <BlogCard
                   title={post.data.title}
                   excerpt={post.data.description}
-                  image={getBlogCardImage(post.data, post.id)}
-                  date={post.data.pubDate.toLocaleDateString('nl-NL', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                  href={`/${post.id}/`}
+                  image={getBlogCardImage(post.data, publicSlug(post), post.body ?? '')}
+                  date={formatPostDate(post.data)}
+                  href={publicHref(post)}
                 />
               ))}
             </div>

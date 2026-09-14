@@ -17,6 +17,7 @@ export type BlogImageFields = {
   featuredImage?: string | null;
   heroImage?: string | null;
   image?: string | null;
+  thumbnail?: string | null;
 };
 
 const IMAGE_EXT = /\.(jpe?g|png|webp|gif|avif|svg)(?:$|\?)/i;
@@ -117,23 +118,28 @@ function firstUsable(...candidates: Array<unknown>): string {
   return '';
 }
 
+function firstBodyImage(html = ''): string {
+  const match = html.match(/<img[^>]+src=["']([^"']+)["']/i);
+  return match?.[1]?.trim() || '';
+}
+
 /** Listing / card image (featured preferred). */
-export function getBlogCardImage(data: BlogImageFields, slug = ''): string {
+export function getBlogCardImage(data: BlogImageFields, slug = '', body = ''): string {
   return (
-    firstUsable(data.featuredImage, data.heroImage, data.image) ||
+    firstUsable(data.featuredImage, data.heroImage, data.image, data.thumbnail, firstBodyImage(body)) ||
     fallbackImage(slug || 'blog')
   );
 }
 
 /** Detail hero image (featured preferred — matches what editors set in Payload). */
-export function getBlogHeroImage(data: BlogImageFields, slug = ''): string {
+export function getBlogHeroImage(data: BlogImageFields, slug = '', body = ''): string {
   return (
-    firstUsable(data.featuredImage, data.heroImage, data.image) ||
+    firstUsable(data.featuredImage, data.heroImage, data.image, data.thumbnail, firstBodyImage(body)) ||
     fallbackImage(slug || 'blog')
   );
 }
 
 /** True when the post has a real selected cover (not a slug fallback). */
-export function hasBlogCover(data: BlogImageFields): boolean {
-  return Boolean(firstUsable(data.featuredImage, data.heroImage, data.image));
+export function hasBlogCover(data: BlogImageFields, body = ''): boolean {
+  return Boolean(firstUsable(data.featuredImage, data.heroImage, data.image, data.thumbnail, firstBodyImage(body)));
 }
